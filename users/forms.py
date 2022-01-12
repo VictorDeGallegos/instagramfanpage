@@ -21,12 +21,12 @@ class SignupForm(forms.Form):
         attrs={'placeholder': 'password confirmation', 'class': 'form-control text-center', 'required': True}))
 
     first_name = forms.CharField(label=False, min_length=2, max_length=50, widget=forms.TextInput(
-        attrs={'placeholder': 'username', 'class': 'form-control text-center', 'required': True}))
+        attrs={'placeholder': 'first name', 'class': 'form-control text-center', 'required': True}))
     last_name = forms.CharField(label=False, min_length=2, max_length=50, widget=forms.TextInput(
-        attrs={'placeholder': 'username', 'class': 'form-control text-center', 'required': True}))
+        attrs={'placeholder': 'last name', 'class': 'form-control text-center', 'required': True}))
 
     email = forms.CharField(label=False, min_length=6, max_length=70, widget=forms.EmailInput(
-        attrs={'placeholder': 'username', 'class': 'form-control text-center', 'required': True}))
+        attrs={'placeholder': 'email', 'class': 'form-control text-center', 'required': True}))
 
     def clean_username(self):
         """Username must be unique."""
