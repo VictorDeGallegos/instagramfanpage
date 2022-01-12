@@ -1,0 +1,36 @@
+{% extends 'users/basesinnav.html' %} {% block title %}Login{% endblock title %} {% block container %} {% load static %}
+<div class="full-h row d-flex justify-content-center align-items-center">
+  <div class="col-md-6 order-2 order-md-1">
+    <img class="img-fluid" src="{% static 'img/pets.png' %}" alt="" />
+  </div>
+  <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center order-1 order-md-2 my-5">
+    <div class="card w-card p-5 shadow-lg align-items-center">
+      <img class="my-5" src="{% static 'img/instagram.png' %}" alt="" width="200px" />
+      {% if error %}
+      <div class="w-75 alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>😔</strong> {{ error }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %}
+      <form class="w-80 mb-5" method="POST" action="{% url 'users:login' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="text" class="form-control text-center" name="username" placeholder="Username" />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control text-center" name="password" placeholder="Password" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sing In</button>
+      </form>
+    </div>
+    <div class="card w-card p-3 my-3 text-center shadow-lg">
+      <span>¿No tienes una cuenta aun? <a class="text-decoration-none" href="{% url 'users:signup' %}">Registrate.</a> </span>
+    </div>
+    <div class="w-card">
+      <img src="{% static 'img/download.png' %}" alt="" />
+    </div>
+  </div>
+</div>
+{% endblock container %}

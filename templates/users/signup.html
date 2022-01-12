@@ -1,0 +1,28 @@
+{% extends 'users/basesinnav.html' %} {% block title %}Login{% endblock title %} {% block container %} {% load static %}
+<div class="full-h row d-flex justify-content-center align-items-center">
+  <div class="col-md-6 order-2 order-md-1">
+    <img class="img-fluid" src="{% static 'img/pets.png' %}" alt="" />
+  </div>
+  <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center order-1 order-md-2 my-5">
+    <div class="card w-card p-5 shadow-lg align-items-center">
+      <img class="my-5" src="{% static 'img/instagram.png' %}" alt="" width="200px" />
+      {% if error %}
+      <div class="w-75 alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>😔</strong> {{ error }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %}
+      <form action="{% url 'users:signup' %}" method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-block">Registrate</button>
+      </form>
+    </div>
+    <div class="card p-3 my-3 text-center shadow-lg">
+      <span>¿Ya tengo una cuenta? <a class="text-decoration-none" href="{% url 'login' %}">Ingresar.</a> </span>
+    </div>
+    <img src="{% static 'img/download.png' %}" alt="" width="350px" />
+  </div>
+  {% endblock container %}
+</div>
