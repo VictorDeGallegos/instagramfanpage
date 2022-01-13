@@ -51,7 +51,7 @@ def update_profile(request):
 
             url = reverse('users:detail', kwargs={
                           'username': request.user.username})
-            return redirect('users:update_profile')
+            return redirect(url)
 
     else:
         form = ProfileForm()
